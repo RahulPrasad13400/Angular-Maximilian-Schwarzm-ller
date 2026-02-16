@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from '../Model/user.model';
 
 @Component({
   selector: 'app-user',
@@ -8,7 +9,8 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  @Input({ required: true }) userData!: { name: string; avatar: string };
+  // INPUT SIGNAL
+  @Input({ required: true }) userData!: User;
   // USING SIGNAL INPUT
   // userData = input<{name : string, avatar : string}>();
 
@@ -18,5 +20,10 @@ export class UserComponent {
   // COMPUTED WAY OF GETTING THE IMAGE PATH
   // imagePath = computed(() => `assets/users/${this.userData.avatar}`)
 
-  onSelectUser() {}
+  // OUTPUT SIGNAL
+  @Output() select = new EventEmitter()
+
+  onSelectUser(user : User) {
+    this.select.emit(user)
+  }
 }
