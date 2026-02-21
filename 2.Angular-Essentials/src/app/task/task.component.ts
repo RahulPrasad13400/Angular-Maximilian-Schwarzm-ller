@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { TasklistComponent } from "./tasklist/tasklist.component";
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [],
+  imports: [TasklistComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
