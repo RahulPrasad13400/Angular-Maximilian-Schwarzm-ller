@@ -5,6 +5,7 @@
       <li>
         <app-user [userData]="user" (select)="selectedUser($event)"></app-user>
       </li>
-    }
+    } 
   </ul>
+  <app-task [userSelected]="userSelected()"></app-task>
 </main>
