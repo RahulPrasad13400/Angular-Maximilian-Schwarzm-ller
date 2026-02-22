@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, output, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, output, Output } from '@angular/core';
 import { User } from '../Model/user.model';
 
 @Component({
@@ -28,4 +28,6 @@ export class UserComponent {
   onSelectUser(user : User) {
     this.select.emit(user)
   }
+
+  selected = input.required<boolean>()
 }

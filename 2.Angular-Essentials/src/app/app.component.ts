@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
@@ -15,9 +15,9 @@ import { NgFor, NgIf } from '@angular/common';
 })
 export class AppComponent {
   users = DUMMY_USERS;
-  userSelected = signal<string>('')
+  userSelected = signal<User | null>(null)
 
   selectedUser(user: User) {
-    this.userSelected.set(user.name);
+    this.userSelected.set(user);
   }
 }

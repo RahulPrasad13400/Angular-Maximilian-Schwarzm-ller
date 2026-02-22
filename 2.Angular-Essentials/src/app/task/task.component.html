@@ -1,11 +1,13 @@
 <section>
   <header>
-    <h2>{{ userSelected }}'s Tasks</h2>
+    <h2>{{ userSelected?.name }}'s Tasks</h2>
     <menu>
       <button>Add Task</button>
     </menu>
   </header>
   <ul>
-    <app-tasklist> </app-tasklist>
+    @for (task of selectedUserTask; track $index) {
+      <app-tasklist [task]="task" (completeTask)="onTaskComplete($event)"></app-tasklist>
+    }
   </ul>
 </section>
