@@ -2,11 +2,12 @@ import { Component, computed, Input } from '@angular/core';
 import { TasklistComponent } from './tasklist/tasklist.component';
 import { DUMMY_TASKS } from '../dummy-tasks';
 import { Task, User } from '../Model/user.model';
+import { NewTaskComponent } from "./new-task/new-task.component";
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [TasklistComponent],
+  imports: [TasklistComponent, NewTaskComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css',
 })
@@ -25,5 +26,14 @@ export class TaskComponent {
 
   onTaskComplete(id: string) {
     this.tasks = this.tasks.filter((task) => task.id !== id);
+  }
+
+
+  isAddingTask : boolean = false;
+  onStartAddTask() {
+    this.isAddingTask = true;
+  }
+  onCancelModal(){
+    this.isAddingTask = false;
   }
 }
